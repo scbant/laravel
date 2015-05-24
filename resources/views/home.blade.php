@@ -1,25 +1,45 @@
 @extends('_layouts.default')
 
 @section('content')
-    <div id="title" style="text-align: center;">
-        <h1>Learn Laravel 5</h1>
-        <div style="padding: 5px; font-size: 16px;">{{ Inspiring::quote() }}</div>
-    </div>
-    <hr>
-    <div id="content">
-        <ul>
-            @foreach ($pages as $page)
-                <li style="margin: 50px 0;">
-                    <div class="title">
-                        <a href="{{ URL('pages/'.$page->id) }}">
-                            <h4>{{ $page->title }}</h4>
-                        </a>
-                    </div>
-                    <div class="body">
+    <div class="container">
+        <div class="blog-header">
+            <h1 class="blog-title">The Bootstrap Blog</h1>
+
+            <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                @foreach ($pages as $page)
+                    <div class="blog-post">
+                        <a href="{{ URL('pages/'.$page->id) }}"><h2 class="blog-post-title">{{ $page->title }}</h2></a>
+                        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
                         <p>{{ $page->body }}</p>
+                        <hr>
                     </div>
-                </li>
-            @endforeach
-        </ul>
+                @endforeach
+                <nav>
+                    <ul class="pager">
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- /.blog-main -->
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>me</p>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Archives</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">March 2014</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.blog-sidebar -->
+        </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container -->
 @endsection
